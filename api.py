@@ -3,8 +3,8 @@ from flask_restful import Resource, Api, reqparse
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 
-# tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")
-# model = AutoModelForMaskedLM.from_pretrained("xlm-roberta-base").to("cuda")
+tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")
+model = AutoModelForMaskedLM.from_pretrained("xlm-roberta-base").to("cuda")
 
 
 def get_score(sentence):
