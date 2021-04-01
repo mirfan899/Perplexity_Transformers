@@ -1,0 +1,5 @@
+transformers
+tqdm
+torch
+flask
+flask-restful
