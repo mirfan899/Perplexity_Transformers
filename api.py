@@ -9,7 +9,6 @@ model = AutoModelForMaskedLM.from_pretrained("xlm-roberta-base").to("cuda")
 
 def get_score(sentence):
     encodings = tokenizer(sentence, return_tensors='pt')
-    print(encodings.input_ids.size(1))
     max_length = 1024
     stride = 512
 
@@ -31,7 +30,6 @@ def get_score(sentence):
 
     ppl = torch.exp(torch.stack(lls).sum() / end_loc)
 
-    print(ppl.item())
     return {"sentence": sentence, "score": ppl.item()}
 
 
@@ -49,7 +47,6 @@ class Perplexity(Resource):
     def post(self):
         args = parser.parse_args()
         if args["sentence"]:
-            print(args["sentence"])
             result = get_score(args["sentence"])
             return result
         else:
